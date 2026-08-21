@@ -1,4 +1,6 @@
-# 🌤️ Weather Forecast App
+
+
+# 🌤️ Weather Forecast APP
 
 A simple, responsive weather forecast app that lets you search for any city and see its current weather conditions. Built as a portfolio project using only HTML5, Bootstrap 5, custom CSS, and vanilla JavaScript — no frameworks, no build tools.
 
