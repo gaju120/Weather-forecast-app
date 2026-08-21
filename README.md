@@ -42,7 +42,7 @@ Weather-Forecast-App/
 3. New keys can take a little while to activate — don't worry if it doesn't work in the first few minutes
 
 ### 2. Add your API key
-Open `script.js` and replace the placeholder with your real key:
+Open `script.js` and replace the placeholder with  real key:
 
 ```js
 const API_KEY = "YOUR_API_KEY";
@@ -60,13 +60,7 @@ This is a static site — no installs or build tools required.
 3. View the temperature, conditions, humidity, and wind speed
 4. If the city can't be found, a friendly error message appears instead
 
-## 🌱 Possible Future Improvements
 
-- 5-day forecast view
-- "Use my location" button with the Geolocation API
-- °C / °F unit toggle
-- Recent search history
-- Light/dark theme switch
 
 ## 🙌 Credits
 
