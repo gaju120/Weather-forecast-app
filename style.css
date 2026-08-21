@@ -1,0 +1,175 @@
+/* ============================================
+   Weather Forecast App — Custom Styles
+   ============================================
+   This file sits on top of Bootstrap 5.
+   We define our color palette once as CSS variables
+   (custom properties) at the top, then reuse them
+   everywhere below instead of repeating hex codes.
+*/
+
+:root {
+  /* Color palette — inspired by a twilight sky */
+  --color-twilight-deep: #1b1e3d;
+  --color-twilight-mid: #4b4278;
+  --color-horizon: #f2895d;
+  --color-glass: rgba(255, 255, 255, 0.88);
+  --color-ink: #21243d;
+  --color-slate: #6c7086;
+}
+
+/* ===== Base page ===== */
+body {
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  color: var(--color-ink);
+  /* A soft gradient from deep night-blue into a warm horizon glow */
+  background: linear-gradient(
+    160deg,
+    var(--color-twilight-deep) 0%,
+    var(--color-twilight-mid) 55%,
+    var(--color-horizon) 100%
+  );
+  background-attachment: fixed;
+}
+
+/* ===== Header ===== */
+.app-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+/* Muted text on the DARK background — used for the header
+   subtitle, loading text, and footer. */
+.app-subtitle {
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 0;
+}
+
+/* ===== Search bar (styled as a rounded "glass" pill) ===== */
+.search-box .form-control {
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 50px 0 0 50px;
+  background-color: var(--color-glass);
+}
+
+.search-box .form-control:focus {
+  box-shadow: 0 0 0 3px rgba(242, 137, 93, 0.35);
+  background-color: #ffffff;
+}
+
+.search-box .btn-search {
+  border-radius: 0 50px 50px 0;
+  padding: 0.75rem 1.75rem;
+  background-color: var(--color-twilight-deep);
+  color: #ffffff;
+  border: none;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.search-box .btn-search:hover {
+  background-color: var(--color-twilight-mid);
+  transform: translateY(-1px);
+}
+
+.search-box .btn-search:focus {
+  box-shadow: 0 0 0 3px rgba(242, 137, 93, 0.45);
+}
+
+.search-box .btn-search:active {
+  transform: translateY(0);
+}
+
+/* ===== Loading spinner ===== */
+#loadingSpinner .spinner-border {
+  color: var(--color-horizon);
+}
+
+/* ===== Weather card ("frosted glass" panel) ===== */
+.weather-card {
+  border: none;
+  border-radius: 24px;
+  background-color: var(--color-glass);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+  padding: 1.5rem 1rem;
+  animation: fadeInUp 0.4s ease; /* small entrance when results appear */
+}
+
+/* Inside the LIGHT glass card, .app-subtitle needs a darker tone
+   than the white version above, or it would be invisible on this
+   background. This more specific selector overrides it for
+   anything nested inside .weather-card (countryName + the three
+   "Feels Like / Humidity / Wind Speed" labels). */
+.weather-card .app-subtitle {
+  color: var(--color-slate);
+}
+
+.weather-icon {
+  width: 110px;
+  height: 110px;
+  margin-top: -0.5rem;
+}
+
+.temperature {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 3.5rem;
+}
+
+.description {
+  color: var(--color-slate);
+  font-size: 1.1rem;
+}
+
+.weather-divider {
+  border-top: 1px solid rgba(33, 36, 61, 0.12);
+  margin: 1.25rem 0;
+}
+
+/* ===== Error message ===== */
+#errorMessage {
+  border: none;
+  border-radius: 14px;
+  background-color: rgba(255, 255, 255, 0.92);
+  color: #b3261e;
+  font-weight: 500;
+}
+
+/* ===== Footer ===== */
+footer small {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ===== Entrance animation for the weather card ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respect users who've asked their OS for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .weather-card {
+    animation: none;
+  }
+  .search-box .btn-search {
+    transition: none;
+  }
+}
+
+/* ===== Small phones: keep the big temperature number from crowding ===== */
+@media (max-width: 400px) {
+  .temperature {
+    font-size: 2.75rem;
+  }
+}
